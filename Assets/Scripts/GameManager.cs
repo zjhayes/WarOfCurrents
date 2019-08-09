@@ -1,5 +1,5 @@
 ﻿// Zachary Hayes - zachary.j.hayes@gmail.com - 08/01/2019
-// v.01
+// v. 0.1.1
 
 using System.Collections;
 using System.Collections.Generic;
@@ -10,14 +10,15 @@ namespace WarOfCurrents
 {
     public class GameManager : MonoBehaviour
     {
+        public static GameManager instance;
+
         float _currentBalance;
-        public Text currentBalanceText;
 
         // Start is called before the first frame update
         void Start()
         {
             _currentBalance = 2;
-            currentBalanceText.text = _currentBalance.ToString("c2");
+            UIManager.instance.UpdateBalanceText();
 
 
         }
@@ -29,11 +30,19 @@ namespace WarOfCurrents
 
         }
 
+        private void Awake()
+        {
+            if(instance == null)
+            {
+                instance = this;
+            }
+        }
+
         // Add amount to current balance.
         public void AddToBalance(float amount)
         {
             _currentBalance += amount;
-            currentBalanceText.text = _currentBalance.ToString("c2");
+            UIManager.instance.UpdateBalanceText();
         }
 
         // Checks if amount can be afforded by current balance.
@@ -43,6 +52,11 @@ namespace WarOfCurrents
                 return false;
             else
                 return true;
+        }
+
+        public float GetCurrentBalance()
+        {
+            return _currentBalance;
         }
     }
 }

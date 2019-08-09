@@ -7,7 +7,7 @@ namespace WarOfCurrents
 {
     public class Plant : MonoBehaviour
     {
-        public GameManager gameManager;
+
         public Slider progressSlider;
         public Button buyButton;
         public Text buyButtonText;
@@ -15,11 +15,11 @@ namespace WarOfCurrents
 
         [SerializeField]
         float _basePlantCost, _basePlantProfit, _plantTimer,
-            _storeMultiplier = 1.0f;
+            _plantMultiplier = 1.0f, _timeDivisor = 2;
         [SerializeField]
-        int _plantCount;
+        int _plantCount, _bonusDivisible = 20;
         [SerializeField]
-        bool _managerUnlocked;
+        bool _managerUnlocked, _plantUnlocked;
 
         float _currentTimer;
         bool _startTimer;
@@ -37,24 +37,35 @@ namespace WarOfCurrents
         // Update is called once per frame.
         void Update()
         {
-            UpdateTimer();
-            progressSlider.value = _currentTimer / _plantTimer;                 // Update slider.
+            if(_plantUnlocked)
+            {
+                UpdateTimer();
+                progressSlider.value = _currentTimer / _plantTimer;                 // Update slider.
+            }
+            else
+            {
+                CheckIfPlantLocked();
+            }
+
             SetBuyButton();
         }
 
         public void BuyPlantOnClick()
         {
-            if (gameManager.CanBuy(_nextPlantCost))
+            if (GameManager.instance.CanBuy(_nextPlantCost))
             {
                 _plantCount += 1;                                               // Update PlantCount.
                 plantCountText.text = _plantCount.ToString();
 
-                gameManager.AddToBalance(-_nextPlantCost);                      // Subtract cost.
+                GameManager.instance.AddToBalance(-_nextPlantCost);                      // Subtract cost.
 
                 _nextPlantCost = (_basePlantCost *
-                    Mathf.Pow(_storeMultiplier,_plantCount));                   // Update next store cost.
+                    Mathf.Pow(_plantMultiplier,_plantCount));                   // Update next store cost.
 
                 UpdateBuyButton();
+
+                CheckAndApplyBuyBonus();
+                
             } // else can't afford it.
         }
 
@@ -92,7 +103,7 @@ namespace WarOfCurrents
                         _startTimer = false;
                     }
                     _currentTimer = 0f;
-                    gameManager.AddToBalance(_basePlantProfit * _plantCount);
+                    GameManager.instance.AddToBalance(_basePlantProfit * _plantCount);
                 }
             }
         }
@@ -100,13 +111,42 @@ namespace WarOfCurrents
         // Enables or disables buy button based on current game state.
         private void SetBuyButton()
         {
-            if (gameManager.CanBuy(_nextPlantCost) && _currentTimer <= 0f)
+            if (GameManager.instance.CanBuy(_nextPlantCost) && (_currentTimer <= 0f ||
+                _managerUnlocked))
             {
                 ToggleBuyButton(true);
             }
             else
             {
                 ToggleBuyButton(false);
+            }
+        }
+
+        // Shows plant when affordable.
+        private void CheckIfPlantLocked()
+        {
+            CanvasGroup cg = this.transform.GetComponent<CanvasGroup>();
+
+            if (!_plantUnlocked && !GameManager.instance.CanBuy(_basePlantCost))
+            {
+                cg.interactable = false;
+                cg.alpha = 0;
+            }
+            else // Show plant.
+            {
+                cg.interactable = true;
+                cg.alpha = 1;
+                _plantUnlocked = true;
+            }
+        }
+
+        // Applies a speed bonus when number of plants owned is divisible by
+        // the Time Divisor.
+        private void CheckAndApplyBuyBonus()
+        {
+            if (_plantCount % _bonusDivisible == 0)
+            {
+                _plantTimer /= _timeDivisor;
             }
         }
     }
