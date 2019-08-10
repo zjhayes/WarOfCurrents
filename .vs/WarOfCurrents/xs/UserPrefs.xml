@@ -1,9 +1,10 @@
 ﻿<Properties StartupConfiguration="{BAB8BE5C-4328-6D8D-EE56-B88D4296B8C1}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIPlant.cs">
     <Files>
-      <File FileName="Assets/Scripts/Plant.cs" Line="133" Column="30" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="58" Column="2" />
-      <File FileName="Assets/Scripts/UIManager.cs" Line="19" Column="1" />
+      <File FileName="Assets/Scripts/Plant.cs" Line="111" Column="1" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="26" Column="40" />
+      <File FileName="Assets/Scripts/UIManager.cs" Line="17" Column="1" />
+      <File FileName="Assets/Scripts/UIPlant.cs" Line="19" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,7 +12,7 @@
           <Node name="WarOfCurrents" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="UIManager.cs" selected="True" />
+                <Node name="UIPlant.cs" selected="True" />
               </Node>
             </Node>
           </Node>

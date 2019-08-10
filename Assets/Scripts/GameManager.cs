@@ -10,17 +10,34 @@ namespace WarOfCurrents
 {
     public class GameManager : MonoBehaviour
     {
+        public delegate void UpdateBalance();
+        public static event UpdateBalance OnUpdateBalance;
+
         public static GameManager instance;
 
+        private const float INITIAL_BALANCE = 2;
+
         float _currentBalance;
+
+        public float CurrentBalance
+        {
+            get { return _currentBalance; }
+        }
+
+        // Called before Start.
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+        }
 
         // Start is called before the first frame update
         void Start()
         {
-            _currentBalance = 2;
-            UIManager.instance.UpdateBalanceText();
-
-
+            _currentBalance = INITIAL_BALANCE;
+            FireOnUpdateBalanceEvent();
         }
 
         // Update is called once per frame
@@ -30,19 +47,11 @@ namespace WarOfCurrents
 
         }
 
-        private void Awake()
-        {
-            if(instance == null)
-            {
-                instance = this;
-            }
-        }
-
         // Add amount to current balance.
         public void AddToBalance(float amount)
         {
             _currentBalance += amount;
-            UIManager.instance.UpdateBalanceText();
+            FireOnUpdateBalanceEvent();
         }
 
         // Checks if amount can be afforded by current balance.
@@ -54,9 +63,12 @@ namespace WarOfCurrents
                 return true;
         }
 
-        public float GetCurrentBalance()
+        private void FireOnUpdateBalanceEvent()
         {
-            return _currentBalance;
+            if (OnUpdateBalance != null)
+            {
+                OnUpdateBalance();
+            }
         }
     }
 }

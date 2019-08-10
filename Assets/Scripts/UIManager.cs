@@ -8,32 +8,27 @@ namespace WarOfCurrents
 
     public class UIManager : MonoBehaviour
     {
-        public static UIManager instance;
         public Text currentBalanceText;
 
-        // Start is called before the first frame update
         void Start()
         {
-
+            UpdateBalanceText(); // Set initial balance.
         }
 
-        // Update is called once per frame
-        void Update()
+        void OnEnable()
         {
-
+            GameManager.OnUpdateBalance += UpdateBalanceText;
         }
 
-        private void Awake()
+        void OnDisable()
         {
-            if (instance == null)
-            {
-                instance = this;
-            }
+            GameManager.OnUpdateBalance -= UpdateBalanceText;
         }
 
         public void UpdateBalanceText()
         {
-            currentBalanceText.text = GameManager.instance.GetCurrentBalance().ToString("c2");
+            currentBalanceText.text = GameManager.instance
+                .CurrentBalance.ToString("c2");
         }
     }
 }

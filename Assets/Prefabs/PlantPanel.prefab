@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 924082885607167624}
   - component: {fileID: 924082885607167626}
   - component: {fileID: 5550748223128315281}
+  - component: {fileID: 919203980}
   m_Layer: 5
   m_Name: PlantPanel
   m_TagString: Untagged
@@ -93,16 +94,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1d1960a5fa8486683c0425874654b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  progressSlider: {fileID: 924082885674688084}
-  buyButton: {fileID: 924082886377471321}
-  buyButtonText: {fileID: 924082886454207737}
   plantCountText: {fileID: 924082886864966651}
   _basePlantCost: 1.5
   _basePlantProfit: 0.5
   _plantTimer: 4
-  _plantMultiplier: 1
+  _plantMultiplier: 1.2
+  _timeDivisor: 5
   _plantCount: 1
+  _bonusDivisible: 20
   _managerUnlocked: 0
   _plantUnlocked: 1
 --- !u!225 &5550748223128315281
@@ -117,6 +116,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &919203980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924082885607167630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ac47f8d4232f4cd4be7152eadbc3454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressSlider: {fileID: 924082885674688084}
+  buyButton: {fileID: 924082886377471321}
+  buyButtonText: {fileID: 924082886454207737}
+  plantCountText: {fileID: 924082886864966651}
+  plant: {fileID: 0}
 --- !u!1 &924082885674688074
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +410,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 924082885607167626}
+      - m_Target: {fileID: 919203980}
         m_MethodName: BuyPlantOnClick
         m_Mode: 1
         m_Arguments:
@@ -683,7 +699,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 924082885607167626}
+      - m_Target: {fileID: 919203980}
         m_MethodName: PowerOnClick
         m_Mode: 1
         m_Arguments:
