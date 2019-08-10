@@ -23,23 +23,30 @@ namespace WarOfCurrents
 
         void Start()
         {
-            SetPlantAvailability();
+            UpdateUI();
+            UpdatePlantCountText();
         }
 
         void Update()
         {
             progressSlider.value = plant.CurrentTimer / plant.PlantTimer;       // Update slider.
-            UpdateUI();
         }
 
-        // Shows plant when affordable.
+        void OnEnable()
+        {
+            GameManager.OnUpdateBalance += UpdateUI;
+        }
+
+        void OnDisable()
+        {
+            GameManager.OnUpdateBalance -= UpdateUI;
+        }
+
         private void UpdateUI()
         {
             SetPlantAvailability();
             SetBuyButtonInteractability();
             UpdateBuyButtonText();
-            UpdatePlantCountText();
-
         }
 
         // Unlock plant when affordable.
@@ -47,7 +54,8 @@ namespace WarOfCurrents
         {
             CanvasGroup cg = this.transform.GetComponent<CanvasGroup>();
 
-            if (!plant.PlantUnlocked && !GameManager.instance.CanBuy(plant.BasePlantCost))
+            if (!plant.PlantUnlocked &&
+                !GameManager.instance.CanBuy(plant.BasePlantCost))
             {
                 cg.interactable = false;
                 cg.alpha = 0;
@@ -95,12 +103,12 @@ namespace WarOfCurrents
         public void BuyPlantOnClick()
         {
             plant.BuyPlantIfAffordable();
+            UpdatePlantCountText();
         }
 
         public void PowerOnClick()
         {
-            plant.PowerPlant();
-            //ToggleBuyButton(false);
+            plant.PowerOn();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace WarOfCurrents
 
         public static GameManager instance;
 
-        private const float INITIAL_BALANCE = 2;
+        private const float INITIAL_BALANCE = 2.00f;
 
         float _currentBalance;
 
@@ -38,13 +38,6 @@ namespace WarOfCurrents
         {
             _currentBalance = INITIAL_BALANCE;
             FireOnUpdateBalanceEvent();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-
         }
 
         // Add amount to current balance.

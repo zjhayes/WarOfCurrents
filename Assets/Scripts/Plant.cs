@@ -67,10 +67,6 @@ namespace WarOfCurrents
             {
                 UpdateTimer();
             }
-            else
-            {
-                //CheckIfPlantLocked();
-            }
         }
 
         public void BuyPlantIfAffordable()
@@ -83,18 +79,19 @@ namespace WarOfCurrents
 
         private void BuyPlant()
         {
-            _plantCount += 1;                                               // Update PlantCount.
+            _plantCount += 1;                                                   // Update PlantCount.
 
-            GameManager.instance.AddToBalance(-_nextPlantCost);             // Subtract cost.
+            float _invPlantCost = -_nextPlantCost;                              // Hold inverse of plant cost.
 
-            _nextPlantCost = (_basePlantCost *
-                Mathf.Pow(_plantMultiplier, _plantCount));                   // Update next store cost.
+            _nextPlantCost = _basePlantCost *
+                Mathf.Pow(_plantMultiplier, _plantCount);                       // Update next store cost.
+
+            GameManager.instance.AddToBalance(_invPlantCost);                   // Subtract cost.
 
             CheckAndApplyBuyBonus();
-
         }
 
-        public void PowerPlant()
+        public void PowerOn()
         {
             if (!_startTimer && _plantCount > 0)
             {
