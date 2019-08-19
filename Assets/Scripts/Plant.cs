@@ -7,9 +7,8 @@ namespace WarOfCurrents
 {
     public class Plant : MonoBehaviour
     {
-
-        public Text plantCountText;
-
+        [SerializeField]
+        Text plantCountText;
         [SerializeField]
         float _basePlantCost, _basePlantProfit, _plantTimer,
             _plantMultiplier = 1.0f, _timeDivisor = 2;
@@ -33,10 +32,17 @@ namespace WarOfCurrents
         public float PlantTimer
         {
             get { return _plantTimer; }
+            set { _plantTimer = value; }
         }
         public float BasePlantCost
         {
             get { return _basePlantCost; }
+            set { _basePlantCost = value; }
+        }
+        public float BasePlantProfit
+        {
+            get { return _basePlantProfit; }
+            set { _basePlantProfit = value; }
         }
         public float NextPlantCost
         {

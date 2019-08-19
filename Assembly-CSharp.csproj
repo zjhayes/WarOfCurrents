@@ -61,9 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\LoadGameData.cs" />
     <Compile Include="Assets\Scripts\Plant.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\UIPlant.cs" />
+    <None Include="Assets\Data\GameData.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Users/zacharyhayes/Unity/WarOfCurrents/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

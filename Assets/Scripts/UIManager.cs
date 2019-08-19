@@ -8,7 +8,8 @@ namespace WarOfCurrents
 
     public class UIManager : MonoBehaviour
     {
-        public Text currentBalanceText;
+        [SerializeField]
+        Text currentBalanceText;
 
         void Start()
         {

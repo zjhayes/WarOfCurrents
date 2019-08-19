@@ -1,0 +1,16 @@
+﻿<GameData>
+    <Plant>
+       <PlantName>Oil Refinery</PlantName> 
+       <BasePlantCost>1.5</BasePlantCost>
+       <BasePlantProfit>1.5</BasePlantProfit>
+       <PlantTimer>4</PlantTimer>
+
+    </Plant>
+    <Plant>
+       <PlantName>Coal Refinery</PlantName> 
+       <BasePlantCost>5.0</BasePlantCost>
+       <BasePlantProfit>5.25</BasePlantProfit>
+       <PlantTimer>10</PlantTimer>
+            
+    </Plant>
+</GameData>
