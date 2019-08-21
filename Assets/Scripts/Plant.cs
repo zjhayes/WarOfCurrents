@@ -10,12 +10,12 @@ namespace WarOfCurrents
         [SerializeField]
         Text plantCountText;
         [SerializeField]
-        float _basePlantCost, _basePlantProfit, _plantTimer,
-            _plantMultiplier = 1.0f, _timeDivisor = 2;
+        float basePlantCost, basePlantProfit, plantTimer,
+            plantMultiplier = 1.0f, timeDivisor = 2;
         [SerializeField]
-        int _plantCount, _bonusDivisible = 20;
+        int plantCount, bonusDivisible = 20;
         [SerializeField]
-        bool _managerUnlocked, _plantUnlocked;
+        bool managerUnlocked, plantUnlocked;
 
         float _currentTimer;
         bool _startTimer;
@@ -23,7 +23,7 @@ namespace WarOfCurrents
 
         public int PlantCount
         {
-            get { return _plantCount; }
+            get { return plantCount; }
         }
         public float CurrentTimer
         {
@@ -31,18 +31,18 @@ namespace WarOfCurrents
         }
         public float PlantTimer
         {
-            get { return _plantTimer; }
-            set { _plantTimer = value; }
+            get { return plantTimer; }
+            set { plantTimer = value; }
         }
         public float BasePlantCost
         {
-            get { return _basePlantCost; }
-            set { _basePlantCost = value; }
+            get { return basePlantCost; }
+            set { basePlantCost = value; }
         }
         public float BasePlantProfit
         {
-            get { return _basePlantProfit; }
-            set { _basePlantProfit = value; }
+            get { return basePlantProfit; }
+            set { basePlantProfit = value; }
         }
         public float NextPlantCost
         {
@@ -50,26 +50,26 @@ namespace WarOfCurrents
         }
         public bool PlantUnlocked
         {
-            get { return _plantUnlocked; }
-            set { _plantUnlocked = value; }
+            get { return plantUnlocked; }
+            set { plantUnlocked = value; }
         }
         public bool ManagerUnlocked
         {
-            get { return _managerUnlocked; }
+            get { return managerUnlocked; }
         }
 
 
         // Start is called before the first frame update.
         void Start()
         {
-            plantCountText.text = _plantCount.ToString();
-            _nextPlantCost = _basePlantCost;
+            plantCountText.text = plantCount.ToString();
+            _nextPlantCost = basePlantCost;
         }
 
         // Update is called once per frame.
         void Update()
         {
-            if(_plantUnlocked)
+            if(plantUnlocked)
             {
                 UpdateTimer();
             }
@@ -85,12 +85,12 @@ namespace WarOfCurrents
 
         private void BuyPlant()
         {
-            _plantCount += 1;                                                   // Update PlantCount.
+            plantCount += 1;                                                   // Update PlantCount.
 
             float _invPlantCost = -_nextPlantCost;                              // Hold inverse of plant cost.
 
-            _nextPlantCost = _basePlantCost *
-                Mathf.Pow(_plantMultiplier, _plantCount);                       // Update next store cost.
+            _nextPlantCost = basePlantCost *
+                Mathf.Pow(plantMultiplier, plantCount);                       // Update next store cost.
 
             GameManager.instance.AddToBalance(_invPlantCost);                   // Subtract cost.
 
@@ -99,7 +99,7 @@ namespace WarOfCurrents
 
         public void PowerOn()
         {
-            if (!_startTimer && _plantCount > 0)
+            if (!_startTimer && plantCount > 0)
             {
                 _startTimer = true;
             }
@@ -111,15 +111,15 @@ namespace WarOfCurrents
             {
                 _currentTimer += Time.deltaTime;
 
-                if (_currentTimer > _plantTimer)
+                if (_currentTimer > plantTimer)
                 {
-                    if (!_managerUnlocked)
+                    if (!managerUnlocked)
                     {
                         _startTimer = false;
                     }
                     _currentTimer = 0f;
                     GameManager.instance
-                        .AddToBalance(_basePlantProfit * _plantCount);
+                        .AddToBalance(basePlantProfit * plantCount);
                 }
             }
         }
@@ -129,9 +129,9 @@ namespace WarOfCurrents
         // the Time Divisor.
         private void CheckAndApplyBuyBonus()
         {
-            if (_plantCount % _bonusDivisible == 0)
+            if (plantCount % bonusDivisible == 0)
             {
-                _plantTimer /= _timeDivisor;
+                plantTimer /= timeDivisor;
             }
         }
     }

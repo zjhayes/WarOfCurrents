@@ -1,13 +1,15 @@
 ﻿<GameData>
     <Plant>
-       <PlantName>Oil Refinery</PlantName> 
+       <PlantName>Oil Power Station</PlantName>
+       <DisplayImage>oilplant01</DisplayImage>
        <BasePlantCost>1.5</BasePlantCost>
        <BasePlantProfit>1.5</BasePlantProfit>
        <PlantTimer>4</PlantTimer>
 
     </Plant>
     <Plant>
-       <PlantName>Coal Refinery</PlantName> 
+       <PlantName>Coal Power Station</PlantName>
+       <DisplayImage>coalplant01</DisplayImage>
        <BasePlantCost>5.0</BasePlantCost>
        <BasePlantProfit>5.25</BasePlantProfit>
        <PlantTimer>10</PlantTimer>

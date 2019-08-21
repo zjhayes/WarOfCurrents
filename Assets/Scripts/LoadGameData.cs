@@ -38,6 +38,13 @@ namespace WarOfCurrents
                     {
                         Text PlantText = newPlant.transform.Find("PlantNameText").GetComponent<Text>();
                         PlantText.text = PlantInfo.InnerText;
+
+                    }
+                    else if (PlantInfo.Name == "DisplayImage")
+                    {
+                        Sprite displayImageSprite = Resources.Load<Sprite>(PlantInfo.InnerText);
+                        Image displayImage = newPlant.transform.Find("DisplayImage").GetComponent<Image>();
+                        displayImage.sprite = displayImageSprite;
                     }
                     else if (PlantInfo.Name == "BasePlantProfit")
                         plantObj.BasePlantProfit = float.Parse(PlantInfo.InnerText);
