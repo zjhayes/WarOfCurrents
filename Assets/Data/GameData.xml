@@ -1,18 +1,33 @@
 ﻿<GameData>
     <Plant>
-       <PlantName>Oil Power Station</PlantName>
-       <DisplayImage>oilplant01</DisplayImage>
-       <BasePlantCost>1.5</BasePlantCost>
-       <BasePlantProfit>1.5</BasePlantProfit>
-       <PlantTimer>4</PlantTimer>
+        <Name>Oil Power Station</Name>
+        <DisplayImage>oilplant01</DisplayImage>
+        <BaseGeneratorCost>1.5</BaseGeneratorCost>
+        <BaseGeneratorProfit>1.5</BaseGeneratorProfit>
+        <Timer>4</Timer>
+        <TimeDivisor>1.1</TimeDivisor>
+        <PowerMultiplier>1.3</PowerMultiplier>
+        <GeneratorCount>1</GeneratorCount>
 
     </Plant>
     <Plant>
-       <PlantName>Coal Power Station</PlantName>
-       <DisplayImage>coalplant01</DisplayImage>
-       <BasePlantCost>5.0</BasePlantCost>
-       <BasePlantProfit>5.25</BasePlantProfit>
-       <PlantTimer>10</PlantTimer>
-            
+        <Name>Natural Gas Power Station</Name>
+        <DisplayImage>naturalgasplant01</DisplayImage>
+        <BaseGeneratorCost>2.5</BaseGeneratorCost>
+        <BaseGeneratorProfit>.50</BaseGeneratorProfit>
+        <Timer>3</Timer>
+        <TimeDivisor>1.2</TimeDivisor>
+        <PowerMultiplier>1.1</PowerMultiplier>
+        <GeneratorCount>0</GeneratorCount>         
+    </Plant>
+    <Plant>
+        <Name>Coal Power Station</Name>
+        <DisplayImage>coalplant01</DisplayImage>
+        <BaseGeneratorCost>5.0</BaseGeneratorCost>
+        <BaseGeneratorProfit>3.25</BaseGeneratorProfit>
+        <Timer>10</Timer>
+        <TimeDivisor>1.2</TimeDivisor>
+        <PowerMultiplier>1.5</PowerMultiplier>
+        <GeneratorCount>0</GeneratorCount>         
     </Plant>
 </GameData>

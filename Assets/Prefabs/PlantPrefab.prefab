@@ -95,13 +95,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1d1960a5fa8486683c0425874654b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plantCountText: {fileID: 924082886864966651}
-  basePlantCost: 0
-  basePlantProfit: 0
-  plantTimer: 0
-  plantMultiplier: 1
+  baseGeneratorCost: 0
+  baseGeneratorProfit: 0
+  timer: 0
+  powerMultiplier: 1
   timeDivisor: 2
-  plantCount: 0
+  generatorCount: 0
   bonusDivisible: 20
   managerUnlocked: 0
   plantUnlocked: 0
@@ -132,8 +131,8 @@ MonoBehaviour:
   progressSlider: {fileID: 924082885674688084}
   buyButton: {fileID: 924082886377471321}
   buyButtonText: {fileID: 924082886454207737}
-  plantCountText: {fileID: 924082886864966651}
-  plant: {fileID: 0}
+  generatorCountText: {fileID: 924082886864966651}
+  plant: {fileID: 924082885607167626}
 --- !u!1 &924082885674688074
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +514,7 @@ GameObject:
   - component: {fileID: 924082886864965636}
   - component: {fileID: 924082886864966651}
   m_Layer: 5
-  m_Name: PlantCountText
+  m_Name: GeneratorCountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

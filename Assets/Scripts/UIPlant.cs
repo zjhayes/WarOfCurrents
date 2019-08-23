@@ -12,7 +12,7 @@ namespace WarOfCurrents
         [SerializeField]
         Button buyButton;
         [SerializeField]
-        Text buyButtonText, plantCountText;
+        Text buyButtonText, generatorCountText;
 
         public Plant plant;
 
@@ -29,7 +29,7 @@ namespace WarOfCurrents
 
         void Update()
         {
-            progressSlider.value = plant.CurrentTimer / plant.PlantTimer;       // Update slider.
+            progressSlider.value = plant.CurrentTimer / plant.Timer;       // Update slider.
         }
 
         void OnEnable()
@@ -55,7 +55,7 @@ namespace WarOfCurrents
             CanvasGroup cg = this.transform.GetComponent<CanvasGroup>();
 
             if (!plant.PlantUnlocked &&
-                !GameManager.instance.CanBuy(plant.BasePlantCost))
+                !GameManager.instance.CanBuy(plant.BaseGeneratorCost))
             {
                 cg.interactable = false;
                 cg.alpha = 0;
@@ -71,7 +71,7 @@ namespace WarOfCurrents
         // Enables or disables buy button based on current game state.
         private void SetBuyButtonInteractability()
         {
-            if (GameManager.instance.CanBuy(plant.NextPlantCost) &&
+            if (GameManager.instance.CanBuy(plant.NextGeneratorCost) &&
                 (plant.CurrentTimer <= 0f || plant.ManagerUnlocked))
             {
                 ToggleBuyButton(true);
@@ -91,13 +91,13 @@ namespace WarOfCurrents
         // Update text on buy button to reflect cost of next plant.
         private void UpdateBuyButtonText()
         {
-            buyButtonText.text = "Buy " + plant.NextPlantCost.ToString("c2");
+            buyButtonText.text = "Buy " + plant.NextGeneratorCost.ToString("c2");
         }
 
         // Update number of plants owned in UI.
         private void UpdatePlantCountText()
         {
-            plantCountText.text = plant.PlantCount.ToString();
+            generatorCountText.text = plant.GeneratorCount.ToString();
         }
 
         public void BuyPlantOnClick()

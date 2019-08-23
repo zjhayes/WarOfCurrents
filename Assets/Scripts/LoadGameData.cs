@@ -34,7 +34,7 @@ namespace WarOfCurrents
 
                 foreach (XmlNode PlantInfo in InfoList)
                 {
-                    if(PlantInfo.Name == "PlantName")
+                    if (PlantInfo.Name == "Name")
                     {
                         Text PlantText = newPlant.transform.Find("PlantNameText").GetComponent<Text>();
                         PlantText.text = PlantInfo.InnerText;
@@ -46,12 +46,20 @@ namespace WarOfCurrents
                         Image displayImage = newPlant.transform.Find("DisplayImage").GetComponent<Image>();
                         displayImage.sprite = displayImageSprite;
                     }
-                    else if (PlantInfo.Name == "BasePlantProfit")
-                        plantObj.BasePlantProfit = float.Parse(PlantInfo.InnerText);
-                    else if(PlantInfo.Name == "BasePlantCost")
-                        plantObj.BasePlantCost = float.Parse(PlantInfo.InnerText);
-                    else if(PlantInfo.Name == "PlantTimer")
-                        plantObj.PlantTimer = float.Parse(PlantInfo.InnerText);
+                    else if (PlantInfo.Name == "BaseGeneratorProfit")
+                        plantObj.BaseGeneratorProfit = float.Parse(PlantInfo.InnerText);
+                    else if (PlantInfo.Name == "BaseGeneratorCost")
+                        plantObj.BaseGeneratorCost = float.Parse(PlantInfo.InnerText);
+                    else if (PlantInfo.Name == "Timer")
+                        plantObj.Timer = float.Parse(PlantInfo.InnerText);
+                    else if (PlantInfo.Name == "TimeDivisor")
+                        plantObj.TimeDivisor = float.Parse(PlantInfo.InnerText);
+                    else if (PlantInfo.Name == "PowerMultiplier")
+                        plantObj.PowerMultiplier = float.Parse(PlantInfo.InnerText);
+                    else if (PlantInfo.Name == "GeneratorCount")
+                        plantObj.GeneratorCount = int.Parse(PlantInfo.InnerText);
+                    else
+                        Debug.Log("Unrecognized GameData.");
                 }
 
                 newPlant.transform.SetParent(plantPanel.transform);
