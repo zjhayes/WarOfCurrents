@@ -23,7 +23,7 @@ namespace WarOfCurrents
 
         void Start()
         {
-            UpdateUI();
+            //UpdateUI();
             UpdatePlantCountText();
         }
 
@@ -35,11 +35,13 @@ namespace WarOfCurrents
         void OnEnable()
         {
             GameManager.OnUpdateBalance += UpdateUI;
+            LoadGameData.OnLoadDataComplete += UpdateUI;
         }
 
         void OnDisable()
         {
             GameManager.OnUpdateBalance -= UpdateUI;
+            LoadGameData.OnLoadDataComplete -= UpdateUI;
         }
 
         private void UpdateUI()

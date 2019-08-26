@@ -15,10 +15,16 @@ namespace WarOfCurrents
 
         public static GameManager instance;
 
-        private const float INITIAL_BALANCE = 2.00f;
+        private const float INITIAL_BALANCE = 0.00f; // Set in GameData.xml
 
+        string _companyName;
         float _currentBalance;
 
+        public string CompanyName
+        {
+            get { return _companyName; }
+            set { _companyName = value; }
+        }
         public float CurrentBalance
         {
             get { return _currentBalance; }
@@ -36,7 +42,6 @@ namespace WarOfCurrents
         // Start is called before the first frame update
         void Start()
         {
-            _currentBalance = INITIAL_BALANCE;
             FireOnUpdateBalanceEvent();
         }
 

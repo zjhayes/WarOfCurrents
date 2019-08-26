@@ -9,9 +9,9 @@ namespace WarOfCurrents
     {
         [SerializeField]
         float baseGeneratorCost, baseGeneratorProfit, timer,
-            powerMultiplier = 1.0f, timeDivisor = 2;
+            powerMultiplier, timeDivisor;
         [SerializeField]
-        int generatorCount, bonusDivisible = 20;
+        int generatorCount, bonusDivisible;
         [SerializeField]
         bool managerUnlocked, plantUnlocked;
 
@@ -46,6 +46,7 @@ namespace WarOfCurrents
         public float NextGeneratorCost
         {
             get { return _nextGeneratorCost; }
+            set { _nextGeneratorCost = value; }
         }
         public bool PlantUnlocked
         {
@@ -71,7 +72,7 @@ namespace WarOfCurrents
         // Start is called before the first frame update.
         void Start()
         {
-            _nextGeneratorCost = baseGeneratorCost;
+            //_nextGeneratorCost = baseGeneratorCost;
         }
 
         // Update is called once per frame.

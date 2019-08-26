@@ -1,9 +1,11 @@
 ﻿<GameData>
+    <CompanyName>Edison Electric Company</CompanyName>
+    <StartingBalance>1.5</StartingBalance>
     <Plant>
         <Name>Oil Power Station</Name>
         <DisplayImage>oilplant01</DisplayImage>
         <BaseGeneratorCost>1.5</BaseGeneratorCost>
-        <BaseGeneratorProfit>1.5</BaseGeneratorProfit>
+        <BaseGeneratorProfit>0.5</BaseGeneratorProfit>
         <Timer>4</Timer>
         <TimeDivisor>1.1</TimeDivisor>
         <PowerMultiplier>1.3</PowerMultiplier>
@@ -14,7 +16,7 @@
         <Name>Natural Gas Power Station</Name>
         <DisplayImage>naturalgasplant01</DisplayImage>
         <BaseGeneratorCost>2.5</BaseGeneratorCost>
-        <BaseGeneratorProfit>.50</BaseGeneratorProfit>
+        <BaseGeneratorProfit>1.50</BaseGeneratorProfit>
         <Timer>3</Timer>
         <TimeDivisor>1.2</TimeDivisor>
         <PowerMultiplier>1.1</PowerMultiplier>
